@@ -1,0 +1,744 @@
+SLIP3
+1..Write a program to calculate length of string using standard library
+function.
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+	char s1[100];
+
+	printf("Enter string::");
+	fgets(s1,100,stdin);
+	
+	printf("Length of the string is::%ld",strlen(s1));
+}
+
+2.Write a program to allocate memory dynamically for n integers.
+Accept the elements and calculate their sum and average.
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	int sum=0,i,s[100],*p,n;
+	float avg=0;
+	printf("Enter limit::");
+	scanf("%d",&n);
+	p=(int *)malloc(n*sizeof(int));
+	printf("Enter n integers::");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",p+i);
+	}
+	for(i=0;i<n;i++)
+	{
+		sum=sum+*p+i;
+	}	
+	avg=sum/i;
+	printf(" sum is::%d\n",sum);
+	printf(" average is::%f",avg);
+}
+
+Write a program to declare a structure person (name, address) which contains another structure birthdate (day, month, year). Accept the details of n persons and display them.
+#include<stdio.h>
+struct person
+{
+      char name[20],address[20];
+      struct bdate
+      {
+       		int dd,mm,yy;
+      } d;
+}p[10];
+int main()
+{
+	int n,i;
+	printf("Enter limit::");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+	 	printf("Enter name:");
+	 	scanf("%s",p[i].name);
+	 	printf("Enter address:");
+	 	scanf("%s",p[i].address);
+	 	printf("Enter birthdate:");
+	 	scanf("%d%d%d",&p[i].d.dd,&p[i].d.mm,&p[i].d.yy);
+	}
+	for(i=0;i<n;i++)
+	{
+	 	printf(" Name:%s\n",p[i].name);
+	 	printf(" Address:%s\n",p[i].address);
+	 	printf("Birthdate:%d/%d/%d\n",p[i].d.dd,p[i].d.mm,p[i].d.yy);
+	}
+}
+
+...........................................................................................................................................................................................................................
+SLIP4
+/*Write a program to interchange two numbers using pointers
+#include<stdio.h>
+int main()
+{
+	int a,b,temp,*p1,*p2;
+	printf("Enter first no:");
+	scanf("%d",&a);
+	printf("Enter second no:");
+	scanf("%d",&b);
+	p1=&a;
+	p2=&b;
+	
+	temp=*p1;
+	*p1=*p2;
+	*p2=temp;
+	
+	printf("First no after interchange:%d\n",*p1);
+	printf("Second no after interchange:%d",*p2);
+}
+
+Write a program to perform the following operations on two
+strings using standard library functions:
+a. Copy b. Compare
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s3[100],s4[100];
+	
+	printf("\nEnter first string:\n");
+	scanf("%s",s3);
+	printf("\nEnter second string:\n");
+	scanf("%s",s4);
+        
+        if(strcmp(s3,s4)==0)
+       {
+       		printf("\nboth strings are equal!!\n");
+       }
+         else if(strcmp(s3,s4)>0)
+       {
+       		printf("%s is greater\n ",s3);
+       }
+       else
+       {
+       		printf("%s is greater\n",s4);
+       }
+       
+       printf("String after copy::%s",strcpy(s3,s4));
+       
+}
+
+Write a program to read the contents of a text file and count the number of
+characters, lines and words in the file */
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+int main()
+{
+	FILE *f1;
+	int i;
+	char ch,c1,c2,c3;
+	
+	f1=fopen("student.txt","r");
+	
+	if(f1==NULL)
+	{
+		printf("File not found!!!!!");
+		exit(0);
+	}
+	while(!feof(f1))
+	{
+		ch=fgetc(f1);
+		
+		if(isalpha(ch))
+		{
+			c1++;
+		}
+		
+		else if(ch=='\n')
+		{
+			c2++;
+		}
+		else if("  ")
+		{
+			c3++;
+		}
+	}
+	printf("\ncharacter count:%d\n",c1);
+	printf("\nline count:%d\n",c2);
+	printf("\nword count:%d\n",c3);
+}
+.......................................................................................................................................................................................................................
+SLIP11
+//Write a C program to find the area of a circle by using PI as macro.
+/*#include<stdio.h>
+#define PI 3.14
+int main()
+{
+	float r,a;
+	
+	printf("Enter radius:");
+	scanf("%f",&r);
+	
+	a=PI*r*r;
+	
+	printf("Area of circle is:%f",a);
+}
+
+Write a menu driven program to perform the following operations on strings using standard library functions:
+i) Compare
+ii) Copy
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s3[100],s4[100];
+	
+	printf("\nEnter first string:\n");
+	scanf("%s",s3);
+	printf("\nEnter second string:\n");
+	scanf("%s",s4);
+        
+        if(strcmp(s3,s4)==0)
+       {
+       		printf("\nboth strings are equal!!\n");
+       }
+         else if(strcmp(s3,s4)>0)
+       {
+       		printf("%s is greater\n ",s3);
+       }
+       else
+       {
+       		printf("%s is greater\n",s4);
+       }
+       
+       printf("String after copy::%s",strcpy(s3,s4));
+       
+}
+
+
+Write a program to accept details of n employees (id, name, salary). Display all the details. Also, search for an employee by name.*/
+#include<stdio.h>
+struct emp
+{
+	int id,salary;
+	char ename[10];
+}e[10];
+
+int main()
+{
+	int n,i;
+	char name[20];
+	printf("Enter limit::");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++)
+	{
+		printf("Enter employee id::");
+		scanf("%d",&e[i].id);
+		printf("Enter employee name::");
+		scanf("%s",e[i].ename);
+		printf("Enter employee salary::");
+		scanf("%d",&e[i].salary);
+	}
+	for(i=0;i<n;i++)
+	{
+		printf("\nemployee id::%d",e[i].id);
+		printf("\nemployee name::%s",e[i].ename);
+		printf("\nemployee salary::%d",e[i].salary);
+	}
+	
+	printf("Enter name to search:");
+	fgets(name,20,stdin);
+	for(i=0;i<n;i++)
+	{
+		if(e[i].ename==name)
+		{
+			printf("\nemployee id::%d",e[i].id);
+			printf("\nemployee name::%s",e[i].ename);
+			printf("\nemployee salary::%d",e[i].salary);
+			
+		}
+	}
+	
+}
+............................................................................................................................................................................................................................
+SLIP12
+/*Write a program to interchange two numbers using pointers
+#include<stdio.h>
+int main()
+{
+	int a,b,temp,*p1,*p2;
+	printf("Enter first no:");
+	scanf("%d",&a);
+	printf("Enter second no:");
+	scanf("%d",&b);
+	p1=&a;
+	p2=&b;
+	
+	temp=*p1;
+	*p1=*p2;
+	*p2=temp;
+	
+	printf("First no after interchange:%d\n",*p1);
+	printf("Second no after interchange:%d",*p2);
+}
+
+ii. Write a C program to count the vowels and consonants in a string.
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s[100];
+	int cnt1=0,cnt2=0,i;
+	printf("Enter string:");
+	fgets(s,100,stdin);
+	
+	for(i=0;s[i]!='\0';i++)
+	{
+	 	if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'||s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U')
+	 	{
+	 		cnt1++;
+	 	}
+	 	else
+	 	{
+	 		cnt2++;
+	 	}
+	}
+	
+	printf("\nVowel count:%d",cnt1);
+	printf("\nconsonent count:%d",cnt2);
+
+}
+
+
+Write a C program to create a structure named book (book_name,author_name and price) and display all book details having price > in a proper format by passing the structure array as function argument.*/
+#include<stdio.h>
+	struct book
+	{
+		char bname[20],aname[20];
+		int price;
+	}b[100];
+	
+void book(struct book b[])
+{
+	int i,n;
+	printf("Enter limit:");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++)
+	{
+		printf("Enter book name::");
+		scanf("%s",b[i].bname);
+		printf("Enter book author::");
+		scanf("%s",b[i].aname);
+		printf("Enter book price::");
+		scanf("%d",&b[i].price);
+	}
+	for(i=0;i<n;i++)
+	{
+		if(b[i].price>500)
+		{
+		printf("\n book name::%s",b[i].bname);
+		printf(" \nbook author::%s",b[i].aname);
+		printf("\n book price::%d",b[i].price);
+		}
+	}
+}
+int main()
+{
+	
+	book(b);
+}
+...........................................................................................................................................................................................................................
+SLIP13
+#include<stdio.h>
+struct student
+{
+	int rno;
+	char sname[20];
+	float per;
+}s[100];
+int main()
+{
+	
+	int n,i,ch;
+	printf("\nEnter limit:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("Enter student roll no:");
+		scanf("%d",&s[i].rno);
+		printf("Enter student name:");
+		scanf("%s",s[i].sname);
+		printf("Enter student percentage:");
+		scanf("%f",&s[i].per);
+	}
+	do
+	{
+		printf("\nMenu:\n1.Display all students\n2. display students having percentage>___");
+		printf("\nEnter choice:");
+		scanf("%d",&ch);
+		
+		switch(ch)
+		{
+			case 1: printf("\nDetails of all students:");
+					for(i=0;i<n;i++)
+						{
+							printf(" \nstudent roll no:%d",s[i].rno);
+							printf(" \nstudent name:%s",s[i].sname);
+							printf("\nstudent percentage:%f",s[i].per);
+						}
+						break;
+			case 2: float p; 
+					printf("\nEnter pecentage to check:");
+					scanf("%f",&p);
+					for(i=0;i<n;i++)
+						{
+							if(p>=s[i].per)
+							{
+								printf(" \nstudent roll no:%d",s[i].rno);
+								printf("\nstudent name:%s",s[i].sname);
+								printf("\n student percentage:%f",s[i].per);
+							 }
+						}
+						break;
+					
+				
+		}
+	}while(ch!=3);
+}
+...........................................................................................................................................................................................................................
+SLIP14
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *f1,*f2;
+	char ch;
+	int i;
+	f1=fopen("student.txt","r");
+	f2=fopen("temp.txt","w");
+	
+	if(f1==NULL)
+	{
+		printf("file does not exist!!");
+		exit(0);
+	}
+	while(!feof(f1))
+	{
+		ch=getc(f1);
+		if(ch>='A'&&ch<='Z')
+		{
+			ch=ch+32;
+			fputc(ch,f2);
+		}
+		else if(ch>='a'&&ch<='z')
+		{
+			ch=ch-32;
+			fputc(ch,f2);
+		}
+		else if(ch>='0'&&ch<='9')
+		{
+			ch='*';
+			fputc(ch,f2);
+		}
+		else
+		{
+			fputc(ch,f2);
+		}
+		
+	}
+	printf("File copieed successfully!!!!");
+	fclose(f1);
+	fclose(f2);
+}
+.............................................................................................................................................................................................................................
+SLIP15
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *f1,*f2;
+	char ch;
+	int i;
+	f1=fopen("student.txt","r");
+	f2=fopen("temp.txt","w");
+	
+	if(f1==NULL)
+	{
+		printf("file does not exist!!");
+		exit(0);
+	}
+	while(!feof(f1))
+	{
+		ch=getc(f1);
+		if(ch>='A'&&ch<='Z')
+		{#include<stdio.h>
+void dispemp();
+struct emp
+{
+	int eno;
+	char ename[20];
+	float salary;
+}e[100];
+
+void dispemp(struct emp e[],int n,int i)
+{
+	for(i=0;i<n;i++)
+	{
+		if(e[i].salary>=10000)
+		{
+			printf("\n employee no::%d",e[i].eno);
+			printf("\n employee name::%s",e[i].ename);
+			printf("\n employee salary::%f",e[i].salary);
+		}
+	}
+}
+int main()
+{
+	int n,i;
+	printf("\nEnter limit:");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++)
+	{
+		printf("Enter employee no::");
+		scanf("%d",&e[i].eno);
+		printf("Enter employee name::");
+		scanf("%s",e[i].ename);
+		printf("Enter employee salary::");
+		scanf("%f",&e[i].salary);
+	}
+	dispemp(e,n,i);
+}
+.........................................................................................................................................................................................................................
+SLIP17
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *f1;
+	char ch;
+	
+	f1=fopen("student","r");
+	
+	if(f1==NULL)
+	{
+		printf("File does not found!!!");
+		exit(0);
+	}
+	
+	while(!feof(f1))
+	{
+		ch=fgetc(f1);
+		printf("%c",ch);
+	}
+}
+............................................................................................................................................................................................................................
+SLIP18
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+	char  s1[100],s2[100];
+	int ch;
+	printf("Enter string:");
+ 	fgets(s1,100,stdin);
+	do
+	{
+		printf("\nMENU::\n1.length\n2.compare\n3.copy\n4.concatenation\n5.Exit");
+		printf("\nEnter choice:");
+		scanf("%d",&ch);
+		
+		switch(ch)
+		{
+			case 1:printf("\nLenght of the string is:%ld",strlen(s1));
+					break;
+			case 2:char s3[100],s4[100];
+					printf("\nEnter first string:\n");
+					scanf("%s",s3);
+					printf("\nEnter second string:\n");
+					scanf("%s",s4);
+			                 
+			                if(strcmp(s3,s4)==0)
+			               {
+			               		printf("\nboth strings are equal!!");
+			               }
+			                 else if(strcmp(s3,s4)>0)
+			               {
+			               		printf("%s is greater ",s3);
+			               }
+			               else
+			               {
+			               		printf("%s is greater",s4);
+			               }
+			              
+			               break;
+			
+			printf(" \ncopied string is:%s",strcpy(s2,s1));
+					break;
+					
+			case 3:printf(" \ncopied string is:%s",strcpy(s2,s1));
+					break;
+					
+			case 4:
+					printf("\nEnter first string:");
+					scanf("%s",s3);
+					printf("\nEnter second string:");
+					scanf("%s",s4);
+					strcat(s3,s4);
+					printf("\nconcate string is of the string is:%s",s3);
+					break;
+		}
+	
+	}while(ch!=5);
+}
+..............................................................................................................................................................................................................................
+SLIP 26
+#include<stdio.h>
+struct emp
+{
+	int id;
+	char name[20];
+	float salary;
+}e[100];
+
+int main()
+{
+	int n,i,ch;
+	printf("Enter limit:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("\nEnter employee id::");
+		scanf("%d",&e[i].id);
+		printf("\nEnter employee name::");
+		scanf("%s",e[i].name);
+		printf("\nEnter employee salary::");
+		scanf("%f",&e[i].salary);
+		
+	}
+	do{
+		printf("\n MENU::\n1.Search by name.\n2.Display all employee.");
+		printf("\nEnter your choice:");
+		scanf("%d",&ch);
+		
+		switch(ch)
+		{
+			case 1:char ename[20];
+					printf("\nenter name to search:");
+					scanf("%s",ename);
+					
+					for(i=0;i<n;i++)
+					{
+						if(strcmp(e[i].name,ename)==1)
+						{
+								printf("\n employee id::%d",e[i].id);
+								printf("\n employee name::%s",e[i].name);
+								printf("\n employee salary::%f",e[i].salary);
+								
+						}
+					}
+			
+			case 2:for(i=0;i<n;i++)
+					{
+								printf("\n employee id::%d",e[i].id);
+								printf("\n employee name::%s",e[i].name);
+								printf("\n employee salary::%f",e[i].salary);
+					}
+		}
+	}while(ch!=3);
+}
+..........................................................................................................................................................................................................................
+SLIP30
+#include<stdio.h>
+#include<string.h>
+struct emp
+{
+	int id;
+	char name[20];
+	float salary;
+}e[100];
+
+int main()
+{
+	int n,i;
+	float max=0;
+	printf("Enter limit:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("\nEnter employee id::");
+		scanf("%d",&e[i].id);
+		printf("\nEnter employee name::");
+		scanf("%s",e[i].name);
+		printf("\nEnter employee salary::");
+		scanf("%f",&e[i].salary);
+	}
+		max=e[0].salary;
+		
+	for(i=0;i<n;i++)
+	{
+		if(e[i].salary>max)
+		{
+			max=e[i].salary;
+		}
+	}
+	printf("Maximum salary is::%f",max);
+}
+........................................................................................................................................................................................................................
+SLIP35
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int **a,**b,**c1,r,c,i,j;
+	printf("Enter number of rows::");
+	scanf("%d",&r);
+	printf("Enter number of cols:");
+	scanf("%d",&c);
+	a=(int **)malloc(r*sizeof(int));
+	b=(int **)malloc(r*sizeof(int));
+	c1=(int **)malloc(r*sizeof(int));
+	for(i=0;i<r;i++)
+	{
+		a[i]=(int *)malloc(c*sizeof(int));
+		b[i]=(int *)malloc(c*sizeof(int));
+		c1[i]=(int *)malloc(c*sizeof(int));
+	}
+	printf("Enter first matrix ");
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	
+	printf("Enter second matrix ");
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			scanf("%d",&b[i][j]);
+		}
+	}
+	
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			c1[i][j]=a[i][j]+b[i][j];
+		}
+	}
+	printf("Sum of the matrix:");
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			printf("%d\t",c1[i][j]);
+		}printf("\n");
+	}
+	
+}
+......................................................................................................................................................................................................................
